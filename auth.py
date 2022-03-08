@@ -38,16 +38,30 @@ genius = lyricsgenius.Genius(client_access_token)
 # print(almbum['sections'][0]['hits'][0]['result']['artist']['id'])
 
 ############### Lyric SEARCH ###############
-lyric = genius.search_lyrics("Your hidden glory and creation", per_page=1, page=None)
+# lyric = genius.search_lyrics("Your hidden glory and creation", per_page=1, page=None)
 # print(lyric['sections'][0]['hits'][0]['highlights'][0]['value']) #gets searched for lyrics that match song lyrics
 # print(lyric['sections'][0]['hits'][0]['result']['artist_names']) #band/artist name
-print(lyric['sections'][0]['hits'][0]['result']['id']) #song id
+# print(lyric['sections'][0]['hits'][0]['result']['id']) #song id
 # print(lyric['sections'][0]['hits'][0]['result']['song_art_image_url']) #band id
 # print(lyric['sections'][0]['hits'][0]['result']['primary_artist']['api_path']) #band id
 # print(lyric['sections'][0]['hits'][0]['result']['primary_artist']['header_image_url']) #band img
 
 ############### Song ###############
-song = genius.search_song(title='How to save a life') 
+# song = genius.search_song(title='How to save a life') 
 # song = genius.search_song(title='How to save a life', artist='The Fray') # can also add 'Artist name as 2nd param
-# song = genius.search_song(title='How to save a life', get_full_info=True) # gets the band as for the song
-print(song)
+# song = genius.search_song(title='How to save a life', get_full_info=True) # 
+# print(song)
+
+############### Artist ###############
+####### Searching by artist returns back their songs, one can also access additonal data using sq br notation or dot notation #######
+artist = genius.search_artist("The Fray", sort='popularity', max_songs=5, get_full_info=True)
+# print(artist.image_url)
+# print(artist.id)
+# print(artist.name)
+songs = artist.songs
+
+for song in songs:
+    print(song)
+
+
+
